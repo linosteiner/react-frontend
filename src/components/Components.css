@@ -1,0 +1,57 @@
+.gtc-header {
+    background-color: #242424;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #646cff;
+}
+
+.gtc-header nav a {
+    margin-left: 1.5rem;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.gtc-header nav a:hover {
+    color: #646cff;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    text-align: left;
+}
+
+main {
+    flex: 1;
+    padding: 2rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.gtc-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.gtc-table th, .gtc-table td {
+    border: 1px solid #444;
+    padding: 8px 12px;
+    text-align: left;
+}
+
+.gtc-table th {
+    background-color: #333;
+}
+
+.gtc-footer {
+    background-color: #1a1a1a;
+    padding: 1rem;
+    text-align: center;
+    color: #888;
+    margin-top: auto;
+}
