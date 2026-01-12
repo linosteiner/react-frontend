@@ -1,21 +1,17 @@
-export interface Currency {
-    code: string;
-    name: string;
-    countries: string[];
-}
+import type {Currency} from "./currency.ts";
 
 export const currencies: Currency[] = [
-    {code: "CHF", name: "Swiss Franc", countries: ["Liechtenstein", "Switzerland"]},
-    {code: "CZK", name: "Czech Koruna", countries: ["Czechia"]},
+    {iso4217: "CHF", name: "Swiss Franc", countries: ["Liechtenstein", "Switzerland"]},
+    {iso4217: "CZK", name: "Czech Koruna", countries: ["Czechia"]},
     {
-        code: "EUR",
+        iso4217: "EUR",
         name: "Euro",
         countries: ["Austria", "Belgium", "France", "Germany", "Italy", "Spain", "Vatican City"]
     },
-    {code: "GBP", name: "Pound Sterling", countries: ["United Kingdom"]},
-    {code: "SEK", name: "Swedish Krona", countries: ["Sweden"]},
-    {code: "TRY", name: "Turkish Lira", countries: ["Turkey"]},
-    {code: "USD", name: "United States Dollar", countries: ["United States"]},
+    {iso4217: "GBP", name: "Pound Sterling", countries: ["United Kingdom"]},
+    {iso4217: "SEK", name: "Swedish Krona", countries: ["Sweden"]},
+    {iso4217: "TRY", name: "Turkish Lira", countries: ["Turkey"]},
+    {iso4217: "USD", name: "United States Dollar", countries: ["United States"]},
 ];
 
 export const exchangeRatesHeaders = ["CHF", "EUR", "USD", "GBP"];
