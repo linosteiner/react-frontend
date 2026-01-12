@@ -9,6 +9,7 @@ export default function Header() {
                 <Link to="/">Home</Link>
                 <Link to="/currencies">Currencies</Link>
                 <Link to="/rates">Rates</Link>
+                <Link to="/countries">Countries</Link>
             </nav>
         </header>
     );

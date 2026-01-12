@@ -1,4 +1,4 @@
-import { exchangeRatesHeaders, exchangeRatesData } from '../data';
+import { exchangeRatesHeaders, exchangeRatesData } from '../data/currencies.ts';
 
 export default function Rates() {
     return (

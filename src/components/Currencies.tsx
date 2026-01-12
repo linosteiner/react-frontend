@@ -1,4 +1,4 @@
-import {currencies} from '../data';
+import {currencies} from '../data/currencies.ts';
 
 export default function Currencies() {
     return (
@@ -14,8 +14,8 @@ export default function Currencies() {
                 </thead>
                 <tbody>
                     {currencies.map((curr) => (
-                        <tr key={curr.code}>
-                            <td>{curr.code}</td>
+                        <tr key={curr.iso4217}>
+                            <td>{curr.iso4217}</td>
                             <td>{curr.name}</td>
                             <td>{curr.countries.join(", ")}</td>
                         </tr>

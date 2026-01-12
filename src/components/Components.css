@@ -46,6 +46,20 @@ main {
 
 .gtc-table th {
     background-color: #333;
+    text-align: center;
+}
+
+.gtc-table td.numeric {
+    text-align: right;
+}
+
+.gtc-table td.center-content {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.gtc-table td.center-content img {
+    height: 40px;
 }
 
 .gtc-footer {
