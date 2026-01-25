@@ -3,8 +3,9 @@ import Main from './components/Main';
 import Home from './components/Home';
 import Currencies from './components/Currencies';
 import Rates from './components/Rates';
-import './components/Components.css';
+import Calculator from './components/Calculator';
 import Countries from "./components/Countries.tsx";
+import './components/Components.css';
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                     <Route path="currencies" element={<Currencies/>}/>
                     <Route path="rates" element={<Rates/>}/>
                     <Route path="countries" element={<Countries/>}/>
+                    <Route path="calculator" element={<Calculator/>}/>
                     <Route path="*" element={<Navigate to="/" replace/>}/>
                 </Route>
             </Routes>

@@ -1,7 +1,7 @@
 import type {City} from "./City.ts";
 import type {Currency} from "./currency.ts";
 
-export interface Country {
+export type Country = {
     geographicalName: string;
     officialName: string;
     capitalCity: City;

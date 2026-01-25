@@ -13,3 +13,8 @@
 - Added proper routing
 - Adjust `currencies.ts` to match new requirements.
 - Added necessary styling for the new component.
+
+# Assignment 11
+- Added `Currency` component. This is used to convert between currencies.
+- Added proper routing
+- Converted `City` and `Country` interfaces to types.
