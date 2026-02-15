@@ -11,6 +11,7 @@ export default function Header() {
                 <Link to="/rates">Rates</Link>
                 <Link to="/countries">Countries</Link>
                 <Link to="/calculator">Calculator</Link>
+                <Link to="/transactions">Transactions</Link>
             </nav>
         </header>
     );

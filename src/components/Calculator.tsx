@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { exchangeRatesData, exchangeRatesHeaders } from '../data/currencies';
+import {useState} from 'react';
+import {exchangeRatesData, exchangeRatesHeaders} from '../data/currencies';
 
 export default function Calculator() {
     const [amount, setAmount] = useState<number>(1);
@@ -7,13 +7,35 @@ export default function Calculator() {
     const [toCurrency, setToCurrency] = useState<string>(exchangeRatesHeaders[0] || "CHF");
     const [result, setResult] = useState<number | null>(null);
 
-    const handleCalculate = () => {
+    const handleCalculate = async () => {
         const fromData = exchangeRatesData.find(d => d.from === fromCurrency);
         if (fromData) {
             const toIndex = exchangeRatesHeaders.indexOf(toCurrency);
             if (toIndex !== -1 && fromData.rates[toIndex] !== undefined) {
                 const rate = fromData.rates[toIndex];
-                setResult(amount * rate);
+                const calculatedResult = amount * rate;
+                setResult(calculatedResult);
+
+                const transaction = {
+                    date: new Date().toISOString().split('T')[0],
+                    userLogin: "demo_user",
+                    sourceAmount: amount,
+                    sourceCurrency: fromCurrency,
+                    targetCurrency: toCurrency,
+                    exchangeRate: rate
+                };
+
+                try {
+                    await fetch('/gtc/rest/transactions', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(transaction)
+                    });
+                } catch (error) {
+                    console.error("Fehler beim Speichern der Transaktion:", error);
+                }
             }
         }
     };
@@ -21,22 +43,22 @@ export default function Calculator() {
     return (
         <div className="content-page">
             <h2>Currency Converter</h2>
-            <div style={{ maxWidth: '150px', margin: '20px 0' }}>
-                <div style={{ marginBottom: '15px' }}>
-                    <label style={{ display: 'block', marginBottom: '5px' }}>Betrag:</label>
+            <div style={{maxWidth: '150px', margin: '20px 0'}}>
+                <div style={{marginBottom: '15px'}}>
+                    <label style={{display: 'block', marginBottom: '5px'}}>Betrag:</label>
                     <input
                         type="number"
                         value={amount}
                         onChange={(e) => setAmount(Number(e.target.value))}
-                        style={{ width: '85%', padding: '8px' }}
+                        style={{width: '85%', padding: '8px'}}
                     />
                 </div>
-                <div style={{ marginBottom: '15px' }}>
-                    <label style={{ display: 'block', marginBottom: '5px' }}>Von (Quellwährung):</label>
+                <div style={{marginBottom: '15px'}}>
+                    <label style={{display: 'block', marginBottom: '5px'}}>Von (Quellwährung):</label>
                     <select
                         value={fromCurrency}
                         onChange={(e) => setFromCurrency(e.target.value)}
-                        style={{ width: '100%', padding: '8px' }}
+                        style={{width: '100%', padding: '8px'}}
                     >
                         {exchangeRatesData.map((data) => (
                             <option key={data.from} value={data.from}>
@@ -45,12 +67,12 @@ export default function Calculator() {
                         ))}
                     </select>
                 </div>
-                <div style={{ marginBottom: '15px' }}>
-                    <label style={{ display: 'block', marginBottom: '5px' }}>Nach (Zielwährung):</label>
+                <div style={{marginBottom: '15px'}}>
+                    <label style={{display: 'block', marginBottom: '5px'}}>Nach (Zielwährung):</label>
                     <select
                         value={toCurrency}
                         onChange={(e) => setToCurrency(e.target.value)}
-                        style={{ width: '100%', padding: '8px' }}
+                        style={{width: '100%', padding: '8px'}}
                     >
                         {exchangeRatesHeaders.map((header) => (
                             <option key={header} value={header}>

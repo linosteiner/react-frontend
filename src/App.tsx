@@ -6,6 +6,7 @@ import Rates from './components/Rates';
 import Calculator from './components/Calculator';
 import Countries from "./components/Countries.tsx";
 import './components/Components.css';
+import Transactions from "./components/Transactions.tsx";
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                     <Route path="rates" element={<Rates/>}/>
                     <Route path="countries" element={<Countries/>}/>
                     <Route path="calculator" element={<Calculator/>}/>
+                    <Route path="transactions" element={<Transactions/>}/>
                     <Route path="*" element={<Navigate to="/" replace/>}/>
                 </Route>
             </Routes>
